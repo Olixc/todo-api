@@ -1,0 +1,5 @@
+/Users/user/.iamolix/k8s/kubernetes-the-hard-way1/todo-api/src/main/java/com/olixc/todo/repository/TodoRepository.java
+/Users/user/.iamolix/k8s/kubernetes-the-hard-way1/todo-api/src/main/java/com/olixc/todo/entity/Todo.java
+/Users/user/.iamolix/k8s/kubernetes-the-hard-way1/todo-api/src/main/java/com/olixc/todo/controller/TodoController.java
+/Users/user/.iamolix/k8s/kubernetes-the-hard-way1/todo-api/src/main/java/com/olixc/todo/service/TodoService.java
+/Users/user/.iamolix/k8s/kubernetes-the-hard-way1/todo-api/src/main/java/com/olixc/todo/TodoApiApplication.java
