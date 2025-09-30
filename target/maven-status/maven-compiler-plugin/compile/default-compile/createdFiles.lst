@@ -1,0 +1,5 @@
+com/olixc/todo/entity/Todo.class
+com/olixc/todo/service/TodoService.class
+com/olixc/todo/repository/TodoRepository.class
+com/olixc/todo/TodoApiApplication.class
+com/olixc/todo/controller/TodoController.class

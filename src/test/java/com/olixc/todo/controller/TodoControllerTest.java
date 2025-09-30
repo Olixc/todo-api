@@ -5,11 +5,13 @@ import com.olixc.todo.entity.Todo;
 import com.olixc.todo.service.TodoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -22,19 +24,17 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(controllers = TodoController.class, excludeAutoConfiguration = {
-        org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration.class,
-        org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration.class
-})
+@ExtendWith(MockitoExtension.class)
 class TodoControllerTest {
 
-    @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+    @Mock
     private TodoService todoService;
 
-    @Autowired
+    @InjectMocks
+    private TodoController todoController;
+
     private ObjectMapper objectMapper;
 
     private Todo testTodo;
@@ -42,6 +42,9 @@ class TodoControllerTest {
 
     @BeforeEach
     void setUp() {
+        objectMapper = new ObjectMapper();
+        mockMvc = MockMvcBuilders.standaloneSetup(todoController).build();
+        
         testTodo = new Todo();
         testTodo.setId(1L);
         testTodo.setTitle("Test Todo");

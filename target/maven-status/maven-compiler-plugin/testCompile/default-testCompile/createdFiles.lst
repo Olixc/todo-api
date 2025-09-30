@@ -1,0 +1,4 @@
+com/olixc/todo/repository/TodoRepositoryTest.class
+com/olixc/todo/service/TodoServiceTest.class
+com/olixc/todo/TodoApiIntegrationTest.class
+com/olixc/todo/controller/TodoControllerTest.class

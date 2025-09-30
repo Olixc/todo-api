@@ -2,6 +2,8 @@ package com.olixc.todo.controller;
 
 import com.olixc.todo.entity.Todo;
 import com.olixc.todo.service.TodoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1/todos")
 @CrossOrigin(origins = "*")
+@Tag(name = "Todo API", description = "RESTful API for managing todos")
 public class TodoController {
 
     @Autowired
@@ -20,6 +23,7 @@ public class TodoController {
 
     // GET /api/v1/todos - Get all todos
     @GetMapping
+    @Operation(summary = "Get all todos", description = "Retrieve a list of all todos")
     public ResponseEntity<List<Todo>> getAllTodos() {
         List<Todo> todos = todoService.getAllTodos();
         return ResponseEntity.ok(todos);
@@ -38,6 +42,7 @@ public class TodoController {
 
     // POST /api/v1/todos - Create new todo
     @PostMapping
+    @Operation(summary = "Create a new todo", description = "Create a new todo item")
     public ResponseEntity<Todo> createTodo(@RequestBody Todo todo) {
         Todo createdTodo = todoService.createTodo(todo);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdTodo);
