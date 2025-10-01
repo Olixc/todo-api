@@ -42,6 +42,4 @@ coverage/
 .env
 
 # Docker
-Dockerfile*
-docker-compose*
 .dockerignore

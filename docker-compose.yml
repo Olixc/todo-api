@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  # Spring Boot Todo API
+  todo-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: todo-api
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://192.168.64.23:5432/todo_db
+      SPRING_DATASOURCE_USERNAME: todo_user
+      SPRING_DATASOURCE_PASSWORD: todo_password
+    ports:
+      - "8080:8080"
+    networks:
+      - todo-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  todo-network:
+    driver: bridge
